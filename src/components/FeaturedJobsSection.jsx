@@ -7,6 +7,7 @@ import {
   Briefcase,
   ArrowRight,
 } from "@gravity-ui/icons";
+import { motion } from "motion/react";
 
 const jobs = [
   {
@@ -124,9 +125,23 @@ export default function FeaturedJobsSection() {
         {/* CTA */}
         <div className="mt-14 flex justify-center">
           
-          <Button className="h-12 rounded-xl bg-white px-7 text-sm font-medium text-black hover:bg-zinc-200">
-            View all job open
-          </Button>
+          <div className="relative w-fit overflow-hidden rounded-3xl p-[2px]">
+        <motion.div
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute inset-[-100%] bg-conic from-cyan-500 via-purple-500 to-pink-500"
+        />
+
+        <button className="relative rounded-3xl bg-black px-4 py-3">
+           View all job open
+        </button>
+        </div>
         </div>
       </div>
     </section>
