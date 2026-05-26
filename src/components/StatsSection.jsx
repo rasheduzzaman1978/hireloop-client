@@ -114,7 +114,7 @@ export default function StatsSection() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="h-full w-full"
+            className="relative w-full h-full"
           >
 
             <Image

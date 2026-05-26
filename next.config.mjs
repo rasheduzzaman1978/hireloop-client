@@ -3,12 +3,15 @@ const nextConfig = {
   reactCompiler: true,
 
   images: {
-    domains: [
-      "png.pngtree.com",
-      "ui-avatars.com",
-    ],
-
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "png.pngtree.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+      },
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",

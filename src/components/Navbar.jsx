@@ -103,16 +103,16 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-3"
         >
-          <div className="relative h-5 w-20 overflow-hidden rounded-xl md:h-8 md:w-30">
-
-            <Image
-              src="/logo.png"
-              alt="Hireloop Logo"
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
+          <div className="relative h-5 w-20 overflow-hidden rounded-xl md:h-8 md:w-[120px]">
+          <Image
+            src="/logo.png"
+            alt="Hireloop Logo"
+            fill
+            priority
+            sizes="(max-width: 768px) 80px, 120px"
+            className="object-cover"
+          />
+        </div>
         </Link>
 
         {/* DESKTOP */}
@@ -215,6 +215,7 @@ export default function Navbar() {
                     }
                     alt={user?.name || "User"}
                     fill
+                    sizes="(max-width: 768px) 40px, 64px"
                     className="object-cover"
                   />
                 </div>

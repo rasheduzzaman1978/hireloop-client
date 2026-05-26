@@ -51,16 +51,16 @@ export default function Footer() {
               className="flex items-center gap-3"
             >
 
-              <div className="relative h-8 w-30 overflow-hidden rounded-xl md:h-10 md:w-40">
-
-                <Image
-                  src="/logo.png"
-                  alt="Programming Hero Logo"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              <div className="relative h-8 w-[120px] overflow-hidden rounded-xl md:h-10 md:w-[160px]">
+              <Image
+                src="/logo.png"
+                alt="Programming Hero Logo"
+                fill
+                sizes="(max-width: 768px) 120px, 160px"
+                className="object-cover"
+                priority
+              />
+            </div>
             </Link>
 
             {/* DESCRIPTION */}
