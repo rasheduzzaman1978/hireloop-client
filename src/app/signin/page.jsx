@@ -12,26 +12,35 @@ import {
   Envelope,
   Lock,
 } from "@gravity-ui/icons";
+
 import { useRouter } from "next/navigation";
+
 import { signIn } from "@/lib/auth-client";
 
 export default function LoginPage() {
+
   const router = useRouter();
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] =
+    useState(false);
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] =
+    useState({
+      email: "",
+      password: "",
+    });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] =
+    useState({});
 
   // HANDLE INPUT
+
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.value,
     });
 
     setErrors({
@@ -41,30 +50,57 @@ export default function LoginPage() {
   };
 
   // VALIDATION
+
   const validate = () => {
+
     let newErrors = {};
 
     // EMAIL
+
     if (!formData.email) {
-      newErrors.email = "Email is required";
+
+      newErrors.email =
+        "Email is required";
+
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
         formData.email
       )
     ) {
-      newErrors.email = "Invalid email address";
+
+      newErrors.email =
+        "Invalid email address";
     }
 
     // PASSWORD
+
     if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
+
+      newErrors.password =
+        "Password is required";
+
+    } else if (
+      formData.password.length < 6
+    ) {
+
       newErrors.password =
         "Password must be at least 6 characters";
-    } else if (!/[A-Z]/.test(formData.password)) {
+
+    } else if (
+      !/[A-Z]/.test(
+        formData.password
+      )
+    ) {
+
       newErrors.password =
         "Password must contain at least one uppercase letter";
-    } else if (!/[a-z]/.test(formData.password)) {
+
+    } else if (
+      !/[a-z]/.test(
+        formData.password
+      )
+    ) {
+
       newErrors.password =
         "Password must contain at least one lowercase letter";
     }
@@ -73,106 +109,124 @@ export default function LoginPage() {
   };
 
   // HANDLE SUBMIT
-  const handleSubmit = async (e) => {
 
-  e.preventDefault();
+  const handleSubmit =
+    async (e) => {
 
-  const validationErrors =
-    validate();
+      e.preventDefault();
 
-  if (
-    Object.keys(
-      validationErrors
-    ).length > 0
-  ) {
+      const validationErrors =
+        validate();
 
-    setErrors(
-      validationErrors
-    );
+      if (
+        Object.keys(
+          validationErrors
+        ).length > 0
+      ) {
 
-    toast.error(
-      "Please fix the errors!"
-    );
+        setErrors(
+          validationErrors
+        );
 
-    return;
-  }
+        toast.error(
+          "Please fix the errors!"
+        );
 
-  try {
+        return;
+      }
 
-    const result =
-      await signIn.email({
+      try {
 
-        email:
-          formData.email,
+        const result =
+          await signIn.email({
 
-        password:
-          formData.password,
-      });
+            email:
+              formData.email,
 
-    if (result.error) {
+            password:
+              formData.password,
+          });
 
-      toast.error(
-        result.error.message
-      );
+        if (result.error) {
 
-      return;
-    }
+          toast.error(
+            result.error.message
+          );
 
-    toast.success(
-      "Login Successful!"
-    );
+          return;
+        }
 
-    setTimeout(() => {
+        toast.success(
+          "Login Successful!"
+        );
 
-      router.push("/");
+        setTimeout(() => {
 
-    }, 1500);
+          router.push("/");
 
-  } catch (error) {
+        }, 1500);
 
-    toast.error(
-      "Invalid email or password!"
-    );
-  }
-};
+      } catch (error) {
+
+        toast.error(
+          "Invalid email or password!"
+        );
+      }
+    };
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#05060F] px-4 py-10">
-      
+
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-100 px-4 py-10 transition-colors duration-300 dark:bg-[#05060F]">
+
       {/* BACKGROUND GLOW */}
-      <div className="absolute left-1/2 top-[-200px] h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[140px]" />
+
+      <div className="absolute left-1/2 top-[-200px] h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-[140px] dark:bg-indigo-500/20" />
 
       {/* LOGIN CARD */}
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl backdrop-blur-2xl sm:p-8">
-        
+
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-gray-200 bg-white p-6 shadow-xl transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-2xl dark:backdrop-blur-2xl sm:p-8">
+
         {/* TOP */}
+
         <div className="text-center">
-          
-          <h1 className="text-3xl font-bold tracking-tight text-white">
+
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+
             Welcome Back
+
           </h1>
 
-          <p className="mt-3 text-sm text-zinc-400">
+          <p className="mt-3 text-sm text-gray-500 dark:text-zinc-400">
+
             Login to continue your journey.
+
           </p>
         </div>
 
         {/* FORM */}
+
         <form
           onSubmit={handleSubmit}
           className="mt-10 space-y-6"
         >
-          
+
           {/* EMAIL */}
+
           <div>
-            
-            <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Email <span className="text-red-500">*</span>
+
+            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-zinc-300">
+
+              Email{" "}
+
+              <span className="text-red-500">
+                *
+              </span>
+
             </label>
 
             <div className="relative">
-              
-              <Envelope className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-500" />
+
+              <Envelope className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-zinc-500" />
 
               <input
                 type="email"
@@ -180,124 +234,173 @@ export default function LoginPage() {
                 placeholder="rashed@gmail.com"
                 value={formData.email}
                 onChange={handleChange}
-                className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] pl-12 pr-4 text-sm text-white outline-none transition placeholder:text-zinc-500 focus:border-indigo-500"
+                className="h-12 w-full rounded-xl border border-gray-300 bg-white pl-12 pr-4 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:placeholder:text-zinc-500"
               />
             </div>
 
             {errors.email && (
+
               <p className="mt-2 text-sm text-red-500">
+
                 {errors.email}
+
               </p>
             )}
           </div>
 
           {/* PASSWORD */}
+
           <div>
-            
-            <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Password <span className="text-red-500">*</span>
+
+            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-zinc-300">
+
+              Password{" "}
+
+              <span className="text-red-500">
+                *
+              </span>
+
             </label>
 
             <div className="relative">
-              
-              <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-500" />
+
+              <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-zinc-500" />
 
               <input
-                type={showPassword ? "text" : "password"}
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
                 name="password"
                 placeholder="********"
                 value={formData.password}
                 onChange={handleChange}
-                className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] pl-12 pr-12 text-sm text-white outline-none transition placeholder:text-zinc-500 focus:border-indigo-500"
+                className="h-12 w-full rounded-xl border border-gray-300 bg-white pl-12 pr-12 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:placeholder:text-zinc-500"
               />
 
               {/* SHOW/HIDE */}
+
               <button
                 type="button"
                 onClick={() =>
-                  setShowPassword(!showPassword)
+                  setShowPassword(
+                    !showPassword
+                  )
                 }
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 transition hover:text-white"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-gray-700 dark:text-zinc-500 dark:hover:text-white"
               >
+
                 {showPassword ? (
+
                   <EyeSlash className="h-5 w-5" />
+
                 ) : (
+
                   <Eye className="h-5 w-5" />
+
                 )}
               </button>
             </div>
 
             {/* PASSWORD HINT */}
-            <p className="mt-2 text-xs text-zinc-500">
+
+            <p className="mt-2 text-xs text-gray-500 dark:text-zinc-500">
+
               Password must contain uppercase,
               lowercase and minimum 6 characters.
+
             </p>
 
             {errors.password && (
+
               <p className="mt-2 text-sm text-red-500">
+
                 {errors.password}
+
               </p>
             )}
           </div>
 
           {/* FORGOT PASSWORD */}
+
           <div className="flex justify-end">
-            
+
             <Link
               href="/forgot-password"
-              className="text-sm font-medium text-indigo-400 transition hover:text-indigo-300"
+              className="text-sm font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
             >
+
               Forgot password?
+
             </Link>
           </div>
 
           {/* LOGIN BUTTON */}
+
           <button
             type="submit"
             className="h-12 w-full rounded-xl bg-indigo-600 text-sm font-semibold text-white transition hover:bg-indigo-500"
           >
+
             Login
+
           </button>
 
           {/* DIVIDER */}
-          <div className="flex items-center gap-4">
-            
-            <div className="h-px flex-1 bg-white/10" />
 
-            <span className="text-sm text-zinc-500">
+          <div className="flex items-center gap-4">
+
+            <div className="h-px flex-1 bg-gray-300 dark:bg-white/10" />
+
+            <span className="text-sm text-gray-500 dark:text-zinc-500">
+
               OR
+
             </span>
 
-            <div className="h-px flex-1 bg-white/10" />
+            <div className="h-px flex-1 bg-gray-300 dark:bg-white/10" />
           </div>
 
           {/* GOOGLE BUTTON */}
-            <button
-              type="button"
-              onClick={async () => {
-                await signIn.social({
-                  provider: "google",
-                  callbackURL: "/",
-                });
-              }}
-              className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] text-sm font-medium text-white transition hover:bg-white/[0.06]"
-            >
-              <span className="text-lg font-bold">
-                G
-              </span>
 
-              Continue with Google
-            </button>
+          <button
+            type="button"
+            onClick={async () => {
+
+              await signIn.social({
+
+                provider: "google",
+
+                callbackURL: "/",
+              });
+            }}
+            className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-gray-300 bg-white text-sm font-medium text-gray-800 transition hover:bg-gray-100 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:bg-white/[0.06]"
+          >
+
+            <span className="text-lg font-bold">
+
+              G
+
+            </span>
+
+            Continue with Google
+
+          </button>
 
           {/* REGISTER */}
-          <p className="text-center text-sm text-zinc-400">
+
+          <p className="text-center text-sm text-gray-600 dark:text-zinc-400">
+
             Don't have an account?{" "}
 
             <Link
               href="/signup"
-              className="font-medium text-indigo-400 transition hover:text-indigo-300"
+              className="font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
             >
+
               Register
+
             </Link>
           </p>
         </form>

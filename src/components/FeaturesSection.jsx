@@ -71,17 +71,21 @@ const features = [
 ];
 
 export default function FeaturesSection() {
+
   return (
-    <section className="bg-black px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
-      
+
+    <section className="bg-gray-100 px-4 py-16 text-gray-900 transition-colors duration-300 dark:bg-black dark:text-white sm:px-6 lg:px-8 lg:py-24">
+
       <div className="mx-auto max-w-7xl">
-        
+
         {/* TOP */}
+
         <div className="text-center">
-          
+
           {/* BADGE */}
-          <div className="mb-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-zinc-400 sm:text-xs">
-            
+
+          <div className="mb-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-gray-500 dark:text-zinc-400 sm:text-xs">
+
             <span className="h-1 w-1 rounded-full bg-indigo-500" />
 
             Feature Job
@@ -90,40 +94,55 @@ export default function FeaturesSection() {
           </div>
 
           {/* TITLE */}
-          <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+
+          <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
+
             Everything you need
+
             <br />
+
             to succeed
+
           </h2>
         </div>
 
         {/* FEATURES */}
+
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          
+
           {features.map((feature) => {
+
             const Icon = feature.icon;
 
             return (
+
               <div
                 key={feature.id}
-                className="group flex items-start gap-4 rounded-2xl border border-white/5 bg-[#0B0B0F] p-5 transition duration-300 hover:border-white/10 hover:bg-[#111116]"
+                className="group flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition duration-300 hover:border-indigo-300 hover:shadow-lg dark:border-white/5 dark:bg-[#0B0B0F] dark:hover:border-white/10 dark:hover:bg-[#111116]"
               >
-                
+
                 {/* ICON */}
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/5 bg-black text-indigo-400">
-                  
+
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-indigo-500 dark:border-white/5 dark:bg-black dark:text-indigo-400">
+
                   <Icon className="h-5 w-5" />
+
                 </div>
 
                 {/* CONTENT */}
+
                 <div>
-                  
-                  <h3 className="text-base font-medium text-white">
+
+                  <h3 className="text-base font-medium text-gray-900 dark:text-white">
+
                     {feature.title}
+
                   </h3>
 
-                  <p className="mt-2 text-sm leading-6 text-zinc-500">
+                  <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-zinc-500">
+
                     {feature.description}
+
                   </p>
                 </div>
               </div>

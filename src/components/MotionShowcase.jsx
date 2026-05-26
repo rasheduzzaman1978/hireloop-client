@@ -2,9 +2,17 @@
 
 import { motion } from "motion/react";
 
+const springTransition = {
+  type: "spring",
+  stiffness: 120,
+  damping: 15,
+};
+
 export default function MotionShowcase() {
+
   return (
-    <section className="min-h-screen space-y-24 overflow-hidden bg-black px-6 py-20 text-white">
+
+    <section className="min-h-screen space-y-24 overflow-hidden bg-gray-100 px-6 py-20 text-gray-900 transition-colors duration-300 dark:bg-black dark:text-white">
 
       {/* ================================================= */}
       {/* 1. FADE IN */}
@@ -14,9 +22,12 @@ export default function MotionShowcase() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="rounded-2xl bg-gray-900 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-white p-10 shadow-md dark:bg-gray-900"
       >
+
         Fade In Animation
+
       </motion.div>
 
       {/* ================================================= */}
@@ -26,9 +37,12 @@ export default function MotionShowcase() {
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="rounded-2xl bg-blue-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-blue-500 p-10 text-white"
       >
+
         Slide From Left
+
       </motion.div>
 
       {/* ================================================= */}
@@ -38,9 +52,12 @@ export default function MotionShowcase() {
       <motion.div
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="rounded-2xl bg-purple-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-purple-500 p-10 text-white"
       >
+
         Slide From Right
+
       </motion.div>
 
       {/* ================================================= */}
@@ -50,9 +67,12 @@ export default function MotionShowcase() {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="rounded-2xl bg-pink-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-pink-500 p-10 text-white"
       >
+
         Slide From Top
+
       </motion.div>
 
       {/* ================================================= */}
@@ -62,9 +82,12 @@ export default function MotionShowcase() {
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="rounded-2xl bg-green-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-green-500 p-10 text-white"
       >
+
         Slide From Bottom
+
       </motion.div>
 
       {/* ================================================= */}
@@ -75,9 +98,12 @@ export default function MotionShowcase() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring" }}
-        className="rounded-2xl bg-cyan-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-cyan-500 p-10 text-white"
       >
+
         Scale In
+
       </motion.div>
 
       {/* ================================================= */}
@@ -91,6 +117,7 @@ export default function MotionShowcase() {
           repeat: Infinity,
           ease: "linear",
         }}
+        style={{ willChange: "transform" }}
         className="h-32 w-32 rounded-full bg-orange-500"
       />
 
@@ -100,9 +127,13 @@ export default function MotionShowcase() {
 
       <motion.button
         whileHover={{ scale: 1.1 }}
-        className="rounded-full bg-white px-8 py-4 text-black"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-full bg-gray-900 px-8 py-4 text-white dark:bg-white dark:text-black"
       >
+
         Hover Scale
+
       </motion.button>
 
       {/* ================================================= */}
@@ -111,9 +142,13 @@ export default function MotionShowcase() {
 
       <motion.button
         whileTap={{ scale: 0.8 }}
-        className="rounded-full bg-red-500 px-8 py-4"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-full bg-red-500 px-8 py-4 text-white"
       >
+
         Tap Effect
+
       </motion.button>
 
       {/* ================================================= */}
@@ -126,6 +161,7 @@ export default function MotionShowcase() {
           duration: 2,
           repeat: Infinity,
         }}
+        style={{ willChange: "transform" }}
         className="h-24 w-24 rounded-full bg-cyan-400"
       />
 
@@ -141,6 +177,7 @@ export default function MotionShowcase() {
           duration: 1.5,
           repeat: Infinity,
         }}
+        style={{ willChange: "transform" }}
         className="h-24 w-24 rounded-full bg-purple-500"
       />
 
@@ -165,9 +202,12 @@ export default function MotionShowcase() {
 
       <motion.div
         drag
-        className="flex h-32 w-32 cursor-grab items-center justify-center rounded-2xl bg-blue-500"
+        style={{ willChange: "transform" }}
+        className="flex h-32 w-32 cursor-grab items-center justify-center rounded-2xl bg-blue-500 text-white"
       >
+
         Drag
+
       </motion.div>
 
       {/* ================================================= */}
@@ -182,9 +222,12 @@ export default function MotionShowcase() {
           top: -50,
           bottom: 50,
         }}
-        className="flex h-32 w-32 cursor-grab items-center justify-center rounded-2xl bg-green-500"
+        style={{ willChange: "transform" }}
+        className="flex h-32 w-32 cursor-grab items-center justify-center rounded-2xl bg-green-500 text-white"
       >
+
         Drag Limit
+
       </motion.div>
 
       {/* ================================================= */}
@@ -200,9 +243,11 @@ export default function MotionShowcase() {
           opacity: 1,
           filter: "blur(0px)",
         }}
-        className="rounded-2xl bg-gray-800 p-10"
+        className="rounded-2xl bg-white p-10 shadow-md dark:bg-gray-800"
       >
+
         Blur Reveal
+
       </motion.div>
 
       {/* ================================================= */}
@@ -217,10 +262,34 @@ export default function MotionShowcase() {
           duration: 1,
           repeat: Infinity,
         }}
+        style={{ willChange: "transform" }}
         className="text-6xl"
       >
+
         🔔
+
       </motion.div>
+
+      <motion.div
+  animate={{
+    rotate: [0, 12, -12, 8, -8, 4, -4, 0],
+  }}
+  transition={{
+    duration: 0.8,
+    repeat: Infinity,
+    repeatDelay: 2,
+    ease: "easeInOut",
+  }}
+  style={{
+    transformOrigin: "top center",
+    willChange: "transform",
+  }}
+  className="text-6xl"
+>
+
+  🔔
+
+</motion.div>
 
       {/* ================================================= */}
       {/* 17. MARQUEE */}
@@ -235,11 +304,15 @@ export default function MotionShowcase() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="whitespace-nowrap text-3xl"
+        style={{ willChange: "transform" }}
+        className="whitespace-nowrap text-3xl font-semibold"
       >
+
         ⚡ Motion Animation Showcase ⚡
+
       </motion.div>
 
+        
       {/* ================================================= */}
       {/* 18. HOVER ROTATE */}
       {/* ================================================= */}
@@ -247,11 +320,37 @@ export default function MotionShowcase() {
       <motion.div
         whileHover={{
           rotate: 10,
+          scale: 1.03,
         }}
-        className="rounded-2xl bg-yellow-500 p-10"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-yellow-500 p-10 text-black"
       >
+
         Hover Rotate
+
       </motion.div>
+
+        <motion.button
+  animate={{
+    rotate: [0, 12, -12, 8, -8, 4, -4, 0],
+  }}
+  transition={{
+    duration: 0.8,
+    repeat: Infinity,
+    repeatDelay: 2,
+    ease: "easeInOut",
+  }}
+  style={{
+    transformOrigin: "top center",
+    willChange: "transform",
+  }}
+  className="text-6xl"
+>
+
+  🔔
+
+</motion.button>
 
       {/* ================================================= */}
       {/* 19. HOVER GLOW */}
@@ -259,11 +358,16 @@ export default function MotionShowcase() {
 
       <motion.div
         whileHover={{
-          boxShadow: "0px 0px 30px rgba(0,255,255,0.6)",
+          scale: 1.03,
+          y: -5,
         }}
-        className="rounded-2xl bg-gray-900 p-10"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-white p-10 shadow-md dark:bg-gray-900"
       >
+
         Hover Glow
+
       </motion.div>
 
       {/* ================================================= */}
@@ -278,6 +382,7 @@ export default function MotionShowcase() {
           duration: 0.8,
           repeat: Infinity,
         }}
+        style={{ willChange: "transform" }}
         className="h-24 w-24 rounded-full bg-red-400"
       />
 
@@ -298,7 +403,9 @@ export default function MotionShowcase() {
         }}
         className="space-y-4"
       >
+
         {[1, 2, 3].map((i) => (
+
           <motion.div
             key={i}
             variants={{
@@ -311,9 +418,12 @@ export default function MotionShowcase() {
                 x: 0,
               },
             }}
-            className="rounded-xl bg-gray-800 p-5"
+            style={{ willChange: "transform" }}
+            className="rounded-xl bg-white p-5 shadow-md dark:bg-gray-800"
           >
+
             Item {i}
+
           </motion.div>
         ))}
       </motion.div>
@@ -334,9 +444,12 @@ export default function MotionShowcase() {
         viewport={{
           once: true,
         }}
-        className="rounded-2xl bg-indigo-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-indigo-500 p-10 text-white"
       >
+
         Scroll Reveal
+
       </motion.div>
 
       {/* ================================================= */}
@@ -345,11 +458,16 @@ export default function MotionShowcase() {
 
       <motion.div
         whileHover={{
-          rotateY: 180,
+          rotate: 6,
+          scale: 1.05,
         }}
-        className="rounded-2xl bg-cyan-600 p-10"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-cyan-600 p-10 text-white"
       >
+
         Flip Animation
+
       </motion.div>
 
       {/* ================================================= */}
@@ -358,11 +476,16 @@ export default function MotionShowcase() {
 
       <motion.div
         whileHover={{
-          skewX: 10,
+          x: 10,
+          scale: 1.02,
         }}
-        className="rounded-2xl bg-teal-500 p-10"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-2xl bg-teal-500 p-10 text-white"
       >
+
         Skew Animation
+
       </motion.div>
 
       {/* ================================================= */}
@@ -370,6 +493,7 @@ export default function MotionShowcase() {
       {/* ================================================= */}
 
       <div className="relative w-fit overflow-hidden rounded-3xl p-[2px]">
+
         <motion.div
           animate={{
             rotate: 360,
@@ -379,11 +503,14 @@ export default function MotionShowcase() {
             repeat: Infinity,
             ease: "linear",
           }}
+          style={{ willChange: "transform" }}
           className="absolute inset-[-100%] bg-conic from-cyan-500 via-purple-500 to-pink-500"
         />
 
-        <div className="relative rounded-3xl bg-black px-10 py-5">
+        <div className="relative rounded-3xl bg-white px-10 py-5 shadow-md dark:bg-black">
+
           Rotating Border
+
         </div>
       </div>
 
@@ -397,9 +524,13 @@ export default function MotionShowcase() {
           paddingLeft: "50px",
           paddingRight: "50px",
         }}
-        className="rounded-xl bg-white px-8 py-4 text-black"
+        transition={springTransition}
+        style={{ willChange: "transform" }}
+        className="rounded-xl bg-gray-900 px-8 py-4 text-white dark:bg-white dark:text-black"
       >
+
         Morph Button
+
       </motion.button>
 
       {/* ================================================= */}
@@ -407,6 +538,7 @@ export default function MotionShowcase() {
       {/* ================================================= */}
 
       <div className="relative flex items-center justify-center">
+
         <motion.div
           animate={{
             scale: [1, 2],
@@ -416,6 +548,7 @@ export default function MotionShowcase() {
             duration: 2,
             repeat: Infinity,
           }}
+          style={{ willChange: "transform" }}
           className="absolute h-24 w-24 rounded-full bg-cyan-500"
         />
 
@@ -437,7 +570,9 @@ export default function MotionShowcase() {
         }}
         className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-[length:200%_200%] bg-clip-text text-6xl font-black text-transparent"
       >
+
         Gradient Animation
+
       </motion.h1>
 
       {/* ================================================= */}
@@ -446,16 +581,19 @@ export default function MotionShowcase() {
 
       <motion.div
         whileHover={{
-          rotateX: 10,
-          rotateY: -10,
+          rotate: 2,
           scale: 1.05,
         }}
+        transition={springTransition}
         style={{
           transformStyle: "preserve-3d",
+          willChange: "transform",
         }}
-        className="rounded-3xl bg-gray-900 p-10"
+        className="rounded-3xl bg-white p-10 shadow-md dark:bg-gray-900"
       >
+
         3D Motion Card
+
       </motion.div>
 
       {/* ================================================= */}
@@ -481,9 +619,12 @@ export default function MotionShowcase() {
           type: "spring",
           stiffness: 120,
         }}
-        className="rounded-3xl bg-gradient-to-br from-cyan-500 to-purple-500 p-10"
+        style={{ willChange: "transform" }}
+        className="rounded-3xl bg-gradient-to-br from-cyan-500 to-purple-500 p-10 text-white"
       >
+
         Combined Premium Animation
+
       </motion.div>
     </section>
   );

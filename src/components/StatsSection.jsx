@@ -39,6 +39,7 @@ const stats = [
 ];
 
 export default function StatsSection() {
+
   /* STAGGER CONTAINER */
 
   const container = {
@@ -72,20 +73,23 @@ export default function StatsSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black px-4 py-20 sm:px-6 lg:px-8">
+
+    <section className="relative overflow-hidden bg-gray-100 px-4 py-20 transition-colors duration-300 dark:bg-black sm:px-6 lg:px-8">
+
       {/* ================= BACKGROUND GLOW ================= */}
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.25),transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.10),transparent_45%)] dark:bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.25),transparent_45%)]" />
 
       {/* EXTRA GLOW */}
 
-      <div className="absolute left-[-120px] top-0 h-[350px] w-[350px] rounded-full bg-cyan-500/20 blur-[120px]" />
+      <div className="absolute left-[-120px] top-0 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[120px] dark:bg-cyan-500/20" />
 
-      <div className="absolute bottom-0 right-[-120px] h-[350px] w-[350px] rounded-full bg-indigo-500/20 blur-[120px]" />
+      <div className="absolute bottom-0 right-[-120px] h-[350px] w-[350px] rounded-full bg-indigo-500/10 blur-[120px] dark:bg-indigo-500/20" />
 
       {/* ================= GLOBE IMAGE ================= */}
 
       <div className="absolute inset-0 flex items-start justify-center">
+
         <motion.div
           initial={{
             opacity: 0,
@@ -100,6 +104,7 @@ export default function StatsSection() {
           }}
           className="relative h-[260px] w-[900px] sm:h-[320px] sm:w-[1200px] md:h-[420px] md:w-[1600px] lg:h-[520px] lg:w-[2200px] xl:h-[620px] xl:w-[2800px]"
         >
+
           <motion.div
             animate={{
               y: [0, -10, 0],
@@ -111,13 +116,14 @@ export default function StatsSection() {
             }}
             className="h-full w-full"
           >
+
             <Image
               src="/globe2.PNG"
               alt="Globe Background"
               fill
               priority
               sizes="100vw"
-              className="object-contain object-top opacity-80"
+              className="object-contain object-top opacity-40 dark:opacity-80"
             />
           </motion.div>
         </motion.div>
@@ -126,6 +132,7 @@ export default function StatsSection() {
       {/* ================= CONTENT ================= */}
 
       <div className="relative mx-auto mt-24 max-w-7xl sm:mt-32 lg:mt-40">
+
         {/* ================= TEXT ================= */}
 
         <motion.div
@@ -145,6 +152,7 @@ export default function StatsSection() {
           }}
           className="mx-auto max-w-3xl text-center"
         >
+
           {/* BADGE */}
 
           <motion.div
@@ -155,9 +163,11 @@ export default function StatsSection() {
               duration: 2,
               repeat: Infinity,
             }}
-            className="mb-6 inline-flex rounded-full border border-indigo-500/30 bg-indigo-500/10 px-5 py-2 text-sm text-indigo-300 backdrop-blur-xl"
+            className="mb-6 inline-flex rounded-full border border-indigo-300 bg-indigo-100 px-5 py-2 text-sm text-indigo-700 shadow-sm backdrop-blur-xl dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300"
           >
+
             ✨ Trusted by thousands worldwide
+
           </motion.div>
 
           {/* TITLE */}
@@ -178,14 +188,21 @@ export default function StatsSection() {
               delay: 0.1,
               duration: 0.7,
             }}
-            className="text-3xl font-semibold leading-relaxed tracking-tight text-white sm:text-4xl md:text-5xl"
+            className="text-3xl font-semibold leading-relaxed tracking-tight text-gray-900 dark:text-white sm:text-4xl md:text-5xl"
           >
+
             Assisting over{" "}
+
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+
               15,000 job seekers
+
             </span>
+
             <br className="hidden sm:block" />
+
             find their dream positions.
+
           </motion.h2>
 
           {/* DESCRIPTION */}
@@ -206,10 +223,12 @@ export default function StatsSection() {
               delay: 0.2,
               duration: 0.7,
             }}
-            className="mx-auto mt-6 max-w-2xl text-base leading-7 text-gray-400 sm:text-lg"
+            className="mx-auto mt-6 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-400 sm:text-lg"
           >
+
             Discover opportunities from top companies and connect with millions
             of professionals around the world.
+
           </motion.p>
         </motion.div>
 
@@ -224,10 +243,13 @@ export default function StatsSection() {
           }}
           className="mt-12 grid grid-cols-1 gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4"
         >
+
           {stats.map((item, index) => {
+
             const Icon = item.icon;
 
             return (
+
               <motion.div
                 key={item.id}
                 variants={card}
@@ -235,24 +257,28 @@ export default function StatsSection() {
                   y: -10,
                   scale: 1.03,
                   borderColor: "rgba(99,102,241,0.5)",
-                  boxShadow: "0px 0px 30px rgba(99,102,241,0.15)",
+                  boxShadow:
+                    "0px 0px 30px rgba(99,102,241,0.15)",
                 }}
                 transition={{
                   type: "spring",
                   stiffness: 200,
                   damping: 15,
                 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl"
+                className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.03]"
               >
+
                 {/* HOVER GLOW */}
 
                 <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-cyan-500/5 to-transparent" />
+
                 </div>
 
                 {/* TOP LIGHT */}
 
-                <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-white/20" />
 
                 {/* ICON */}
 
@@ -265,9 +291,11 @@ export default function StatsSection() {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-gray-300"
+                  className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-gray-200 bg-gray-100 text-gray-700 dark:border-white/10 dark:bg-white/5 dark:text-gray-300"
                 >
+
                   <Icon className="h-6 w-6" />
+
                 </motion.div>
 
                 {/* VALUE */}
@@ -284,9 +312,11 @@ export default function StatsSection() {
                   transition={{
                     delay: index * 0.1,
                   }}
-                  className="relative z-10 mt-10 text-5xl font-bold tracking-tight text-white"
+                  className="relative z-10 mt-10 text-5xl font-bold tracking-tight text-gray-900 dark:text-white"
                 >
+
                   {item.value}
+
                 </motion.h3>
 
                 {/* LABEL */}
@@ -301,9 +331,11 @@ export default function StatsSection() {
                   transition={{
                     delay: 0.2 + index * 0.1,
                   }}
-                  className="relative z-10 mt-3 text-sm tracking-wide text-gray-400"
+                  className="relative z-10 mt-3 text-sm tracking-wide text-gray-600 dark:text-gray-400"
                 >
+
                   {item.label}
+
                 </motion.p>
 
                 {/* FLOATING DOT */}

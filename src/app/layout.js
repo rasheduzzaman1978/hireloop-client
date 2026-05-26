@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ToastContainer } from "react-toastify";
-
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = Geist({
@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} dark`}
     >
       <body className="min-h-screen bg-[#0A0A0F] text-white">
+        <ThemeProvider>
         <div className="flex min-h-screen flex-col">
           <Navbar />
            <main className="flex-1">
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
             theme="dark"
           />
         </div>
+        </ThemeProvider>
       </body>
     </html>
   );
